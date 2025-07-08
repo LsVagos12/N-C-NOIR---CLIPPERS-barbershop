@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N&C NOIR & CLIPPERS | Premium Barbershop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/483d3ead-c121-46cc-9d7c-6c2e7ab7abb9.png') no-repeat center center/cover;
+            color: white;
+        }
+        
+        .barber-icon {
+            color: #d4af37;
+            font-size: 2rem;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .price-item {
+            transition: all 0.3s ease;
+        }
+        
+        .price-item:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .dark body {
+            background-color: #1a202c;
+            color: #ffffff;
+        }
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+        .dark .text-gray-700 {
+            color: #e2e8f0;
+        }
+        .gold-text {
+            color: #d4af37;
+        }
+        
+        .animate-fade {
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .animate-fade.active {
+            opacity: 1;
+        }
+        
+        .animate-slide {
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+    </style>
+</head>
+    <script>
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        }
+    </script>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-black text-white p-4 sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-cut barber-icon"></i>
+                <span class="text-2xl font-bold">N&C <span class="gold-text">NOIR & CLIPPERS</span></span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-yellow-400">Home</a>
+                <a href="#services" class="hover:text-yellow-400">Layanan</a>
+                <a href="#products" class="hover:text-yellow-400">Produk</a>
+                <a href="#pricing" class="hover:text-yellow-400">Harga</a>
+                <a href="#about" class="hover:text-yellow-400">Tentang</a>
+            </div>
+            <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-700 mx-2">
+                <i class="fas fa-moon text-yellow-400"></i>
+            </button>
+            <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu Items -->
+        <div id="mobile-menu" class="hidden absolute top-16 left-0 right-0 bg-black z-40">
+            <div class="flex flex-col space-y-4 p-4">
+                <a href="#home" class="hover:text-yellow-400">Home</a>
+                <a href="#services" class="hover:text-yellow-400">Layanan</a>
+                <a href="#products" class="hover:text-yellow-400">Produk</a>
+                <a href="#pricing" class="hover:text-yellow-400">Harga</a>
+                <a href="#about" class="hover:text-yellow-400">Tentang</a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center">
+        <div class="animate-fade opacity-0 transition-opacity duration-1000 active:opacity-100">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 animate-slide">N&C <span class="gold-text">NOIR & CLIPPERS</span></h1>
+            <p class="text-xl md:text-2xl mb-8 animate-slide">Seni potong rambut premium untuk pria modern</p>
+            <button class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full text-lg transition duration-300 transform hover:scale-105 animate-slide">
+                <i class="fas fa-calendar-check mr-2"></i>Book Appointment
+            </button>
+        </div>
+    </section>
+    <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+        <img id="lightbox-img" src="" alt="" class="max-h-full max-w-full">
+        <button onclick="document.getElementById('lightbox').classList.add('hidden')" 
+                class="absolute top-4 right-4 text-white text-4xl">&times;</button>
+    </div>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">PRODUK PERAWATAN YANG KAMI GUNAKAN</h2>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-12"></div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Product 1 -->
+                <div class="service-card bg-gray-50 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-pump-soap text-4xl gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Pomade dan Wax</h3>
+                    <p class="text-gray-700">Produk styling terbaik untuk memberikan tampilan yang maksimal, dengan hasil yang tahan lama. Membentuk gaya rambut sesuai keinginan dengan kesan natural dan bebas kusut.</p>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="service-card bg-gray-50 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-pump-medical text-4xl gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Shampoo & Conditioner</h3>
+                    <p class="text-gray-700">Formula perawatan rambut yang menyegarkan dan menutrisi rambut. Membersihkan tanpa mengikis minyak alami rambut, membuatnya lembut, berkilau, dan mudah diatur.</p>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="service-card bg-gray-50 p-8 rounded-lg shadow-md transition duration-300">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-spa text-4xl gold-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-4">Serum Rambut & Minyak Rambut</h3>
+                    <p class="text-gray-700">Produk untuk perawatan rambut dan kulit kepala agar tetap sehat dan terjaga. Memberikan nutrisi mendalam, mengurangi kerontokan, dan membuat rambut lebih kuat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">DAFTAR HARGA LAYANAN</h2>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-12"></div>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- Price Item 1 -->
+                <div class="price-item flex justify-between items-center p-6 border-b">
+                    <div>
+                        <h3 class="font-bold text-lg">Potong Rambut Pria</h3>
+                        <p class="text-gray-600">Gaya klasik atau modern sesuai permintaan</p>
+                    <div class="flex items-center text-sm mt-2 text-yellow-600">
+                        <i class="fas fa-clock mr-1"></i> 30-45 menit
+                    </div>
+                    </div>
+                    <span class="font-bold text-xl gold-text">Rp100.000</span>
+                </div>
+                
+                <!-- Price Item 2 -->
+                <div class="price-item flex justify-between items-center p-6 border-b">
+                    <div>
+                        <h3 class="font-bold text-lg">Cukur Jenggot & Kumis</h3>
+                        <p class="text-gray-600">Perawatan jenggot dengan teknik profesional</p>
+                    </div>
+                    <span class="font-bold text-xl gold-text">Rp50.000</span>
+                </div>
+                
+                <!-- Price Item 3 -->
+                <div class="price-item flex justify-between items-center p-6 border-b">
+                    <div>
+                        <h3 class="font-bold text-lg">Perawatan Rambut</h3>
+                        <p class="text-gray-600">Treatment khusus untuk kesehatan rambut</p>
+                    </div>
+                    <span class="font-bold text-xl gold-text">Rp150.000</span>
+                </div>
+                
+                <!-- Price Item 4 -->
+                <div class="price-item flex justify-between items-center p-6 border-b">
+                    <div>
+                        <h3 class="font-bold text-lg">Grooming & Styling</h3>
+                        <p class="text-gray-600">Penataan rambut dengan produk premium</p>
+                    </div>
+                    <span class="font-bold text-xl gold-text">Rp120.000</span>
+                </div>
+                
+                <!-- Price Item 5 -->
+                <div class="price-item flex justify-between items-center p-6">
+                    <div>
+                        <h3 class="font-bold text-lg">Konsultasi Gaya Rambut</h3>
+                        <p class="text-gray-600">Rekomendasi gaya sesuai bentuk wajah</p>
+                    </div>
+                    <span class="font-bold text-xl gold-text">Rp75.000</span>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <p class="text-gray-600">* Harga dapat berubah tanpa pemberitahuan</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f0473cfd-7a72-4b9e-a55b-dea9eb8ed995.png" alt="Interior modern barbershop dengan kursi potong rambut kulit hitam dan peralatan barber profesional" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Tentang <span class="gold-text">Noir & Clippers (N&C)</span></h2>
+                    <p class="text-gray-700 mb-4">Noir & Clippers adalah barbershop premium yang berfokus pada kualitas dan pelayanan terbaik untuk pria. Didirikan oleh Yohanes A P, N&C hadir dengan misi untuk memberikan pengalaman potong rambut yang lebih dari sekadar layanan.</p>
+                    <p class="text-gray-700 mb-6">Kami memandang setiap kunjungan sebagai sebuah perjalanan untuk memperbaiki dan meningkatkan rasa percaya diri setiap pria. Dengan barber profesional yang berpengalaman dan produk-produk terbaik, kami berkomitmen memberikan hasil yang memuaskan.</p>
+                    <div class="flex space-x-4">
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <i class="fas fa-award text-2xl gold-text mb-2"></i>
+                            <p class="font-bold">Profesional</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <i class="fas fa-scissors text-2xl gold-text mb-2"></i>
+                            <p class="font-bold">Berkualitas</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <i class="fas fa-heart text-2xl gold-text mb-2"></i>
+                            <p class="font-bold">Hygienis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After Slider -->
+    <section class="py-16 bg-gray-100 dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">HASIL KERJA KAMI</h2>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-12"></div>
+            <div class="max-w-3xl mx-auto">
+                <div class="relative h-96 overflow-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d073bd9f-857f-49d9-8446-5295a63c73c7.png" alt="Before haircut" class="absolute h-full w-full object-cover">
+                    <div class="absolute top-0 left-0 h-full w-1/2 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0b251710-e92a-4f10-bb7d-eab3417cda5b.png" alt="After haircut" class="h-full w-full object-cover">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" 
+                           class="absolute top-0 left-0 w-full h-full opacity-0 cursor-ew-resize z-10"
+                           oninput="this.previousElementSibling.style.width = this.value + '%'">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                                bg-white dark:bg-gray-700 text-black dark:text-white p-2 rounded-full shadow-lg">
+                        <i class="fas fa-arrows-alt-h"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">GALERI KAMI</h2>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-12"></div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4cf3a110-0af0-4774-bd6b-908ad9a6817e.png" alt="Barber sedang memotong rambut pelanggan dengan alat cukur profesional" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a349c2aa-7703-423b-b955-0d8b06778e64.png" alt="Pelanggan bahagia setelah potong rambut dengan gaya modern" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ca4d9ac1-2376-47f6-9c12-62754a0efa51.png" alt="Interior barbershop dengan cahaya hangat dan dekorasi vintage" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/eeed2d01-498f-4ba8-87e4-de79fdc95e4f.png" alt="Koleksi produk perawatan rambut premium di rak barbershop" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7f55fea3-5fd2-4107-9ab5-1381521ba654.png" alt="Proses pencukuran jenggot dengan silet dan produk khusus" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8fac0383-023c-4101-a2e0-e39b4982501f.png" alt="Pelanggan sedang konsultasi gaya rambut dengan barber" class="w-full h-64 object-cover hover:scale-105 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-yellow-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="animate-slide">
+                    <div class="text-5xl font-bold mb-2" id="clientCount">0</div>
+                    <p class="text-xl">Pelanggan Setia</p>
+                    <div class="w-16 h-1 bg-white mx-auto mt-2"></div>
+                </div>
+                <div class="animate-slide">
+                    <div class="text-5xl font-bold mb-2" id="yearsCount">0</div>
+                    <p class="text-xl">Tahun Pengalaman</p>
+                    <div class="w-16 h-1 bg-white mx-auto mt-2"></div>
+                </div>
+                <div class="animate-slide">
+                    <div class="text-5xl font-bold mb-2" id="serviceCount">0</div>
+                    <p class="text-xl">Layanan Tersedia</p>
+                    <div class="w-16 h-1 bg-white mx-auto mt-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="py-16 bg-black text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">TESTIMONI PELANGGAN</h2>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-12"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-1 lg:gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9aaf9de4-729e-4397-92af-bad797f19ae9.png" alt="Foto pelanggan pria dengan rambut pendek rapi" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Andi Wijaya</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Hasil potong rambit di N&C selalu memuaskan. Barber sangat profesional dan detail. Kini saya selalu percaya diri dengan penampilan."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0545731b-f375-4242-9120-758c9a3290b3.png" alt="Foto pelanggan pria berjenggot dengan gaya rambut fade" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Rendi Pratama</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Perawatan jenggot terbaik yang pernah saya dapatkan. Produknya berkualitas tinggi dan barber sangat mengerti gaya yang cocok untuk saya."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6417b02d-75e4-41f6-aac9-93056cacb850.png" alt="Foto eksekutif muda dengan gaya rambut pompadour" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Setelah konsultasi gaya rambut, saya dapat rekomendasi yang sempurna untuk bentuk wajah saya. Sekarang banyak yang memuji penampilan saya."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">HUBUNGI KAMI</h2>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto mb-12"></div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-xl font-bold mb-4">Lokasi Kami</h3>
+                    <p class="mb-6">Jalan Barbershop No. 123, Sulfat, MALANG</p>
+                    
+                    <h3 class="text-xl font-bold mb-4">Jam Operasional</h3>
+                    <ul class="mb-6">
+                        <li class="mb-2">Senin-Jumat: 09.00 - 20.00</li>
+                        <li class="mb-2">Sabtu: 10.00 - 18.00</li>
+                        <li>Minggu: 12.00 - 17.00</li>
+                    </ul>
+                    
+                    <h3 class="text-xl font-bold mb-4">Kontak</h3>
+                    <div class="space-y-2">
+                        <p><i class="fas fa-phone-alt mr-2 gold-text"></i> (021) 1234-5678</p>
+                        <p><i class="fas fa-envelope mr-2 gold-text"></i> info@n&clippers.com</p>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h4 class="font-bold mb-2">Ikuti Kami</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-700 hover:text-blue-600 text-xl"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-gray-700 hover:text-blue-800 text-xl"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-gray-700 hover:text-red-600 text-xl"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="text-gray-700 hover:text-blue-400 text-xl"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-1">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-600">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-1">Email</label>
+                            <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-600">
+                        </div>
+                        <div>
+                            <label for="phone" class="block mb-1">Nomor Telepon</label>
+                            <input type="tel" id="phone" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-600">
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-1">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-600"></textarea>
+                        </div>
+                        <button type="submit" class="bg-black hover:bg-gray-800 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-cut barber-icon"></i>
+                        <span class="text-2xl font-bold">N&C <span class="gold-text">NOIR & CLIPPERS</span></span>
+                    </div>
+                    <p class="mt-2 text-gray-400">Barbershop Premium Pria</p>
+                </div>
+                <div>
+                    <p class="text-gray-400">© 23083000005. YOHANES_ANANO_PUTRO.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="fixed bottom-6 right-6 z-50 animate-bounce">
+        <a href="#contact" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center transition-all duration-300 transform hover:rotate-2">
+            <i class="fas fa-calendar-alt mr-2"></i> Booking Now
+        </a>
+    </div>
+
+    <script>
+        // Gallery lightbox
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', function() {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.remove('hidden');
+            });
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-fade, .animate-slide');
+            elements.forEach(el => {
+                const elTop = el.getBoundingClientRect().top;
+                if (elTop < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('#clientCount, #yearsCount, #serviceCount');
+            const speed = 200;
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(animateCounters, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && e.target !== mobileMenuButton) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize counters
+            document.getElementById('clientCount').setAttribute('data-target', '1500');
+            document.getElementById('yearsCount').setAttribute('data-target', '8');
+            document.getElementById('serviceCount').setAttribute('data-target', '15');
+            animateCounters();
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Initialize
+            const mobileMenuBtn = document.querySelector('button.md\\:hidden');
+            const navLinks = document.querySelector('.md\\:flex.space-x-6');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('hidden');
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
